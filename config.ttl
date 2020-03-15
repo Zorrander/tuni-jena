@@ -19,9 +19,6 @@
    # ja:loadClass "your.code.Class" ;
    .
 
-## ---------------------------------------------------------------
-## Updatable in-memory dataset.
-
 <#service1> rdf:type fuseki:Service ;
     fuseki:name                       "ds" ;       # http://host:port/ds
     fuseki:serviceQuery               "sparql" ;   # SPARQL query service
@@ -35,10 +32,21 @@
     .
 
 ## ---------------------------------------------------------------
+## Updatable in-memory dataset.
+<#dataset>    rdf:type ja:RDFDataset ;
+    rdfs:label "Books" ;
+    ja:defaultGraph
+    [ rdfs:label "books.ttl" ;
+      a ja:MemoryModel ;
+      ja:content [ja:externalContent <file:Data/books.ttl> ] ;
+    ] ;
+    .
+
+## ---------------------------------------------------------------
 ## Updatable TDB dataset with all services enabled.
 
-<#dataset> rdf:type      tdb:DatasetTDB ;
-    tdb:location "DB" ;
+#<#dataset> rdf:type      tdb:DatasetTDB ;
+#    tdb:location "DB" ;
     # Make the default graph be the union of all named graphs.
     ## tdb:unionDefaultGraph true ;
-     .
+#     .
