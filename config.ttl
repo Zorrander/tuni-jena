@@ -43,4 +43,21 @@
     .
 
 ## In-memory, initially empty.
-<#emptyDataset> rdf:type ja:RDFDataset .
+<#Panda> rdf:type ja:RDFDataset .
+
+
+<#service_tdb_all> rdf:type fuseki:Service ;
+    rdfs:label                      "TDB Service (RW)" ;
+    fuseki:name                     "data" ;
+    fuseki:serviceQuery             "query" ;
+    fuseki:serviceQuery             "sparql" ;
+    fuseki:serviceUpdate            "update" ;
+    fuseki:serviceUpload            "upload" ;
+    fuseki:serviceReadWriteGraphStore      "data" ;
+    # A separate read-only graph store endpoint:
+    fuseki:serviceReadGraphStore       "get" ;
+    fuseki:dataset           <#tdb_dataset_readwrite> ;
+    .
+
+<#tdb_dataset_readwrite> rdf:type tdb:DatasetTDB ;
+tdb:location "DB2" ;
