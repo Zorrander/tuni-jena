@@ -22,7 +22,7 @@
 <#service1> rdf:type fuseki:Service ;
     fuseki:name                       "ds" ;       # http://host:port/ds
     fuseki:serviceQuery               "sparql" ;   # SPARQL query service
-    fuseki:serviceQuery               "query" ;    # SPARQL query service (alt name)
+    fuseki:serviceQuery               "query" ;    # SPARQL query service 
     fuseki:serviceUpdate              "update" ;   # SPARQL update service
     fuseki:serviceUpload              "upload" ;   # Non-SPARQL upload service
     fuseki:serviceReadWriteGraphStore "data" ;     # SPARQL Graph store protocol (read and write)
