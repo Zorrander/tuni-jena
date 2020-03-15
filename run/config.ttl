@@ -26,8 +26,6 @@
    ) .
 
 
-   ## ---------------------------------------------------------------
-   ## Updatable in-memory dataset.
 
    <#service1> rdf:type fuseki:Service ;
        fuseki:name                       "ds" ;       # http://host:port/ds
@@ -43,16 +41,7 @@
 
    <#dataset-mem> rdf:type ja:RDFDataset .
 
-## ---------------------------------------------------------------
-## Updatable TDB dataset with all services enabled.
 
-<#dataset> rdf:type      tdb:DatasetTDB ;
-  tdb:location "run/databases/dataset" ;
-  # Query timeout on this dataset (1s, 1000 milliseconds)
-  ja:context [ ja:cxtName "arq:queryTimeout" ;  ja:cxtValue "1000" ] ;
-  # Make the default graph be the union of all named graphs.
-  ## tdb:unionDefaultGraph true ;
- .
 
 
  <#service2>  rdf:type fuseki:Service ;
