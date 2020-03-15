@@ -30,4 +30,4 @@
   ja:context [ ja:cxtName "arq:queryTimeout" ;  ja:cxtValue "1000" ] ;
   # Make the default graph be the union of all named graphs.
   ## tdb:unionDefaultGraph true ;
-.
+ .
