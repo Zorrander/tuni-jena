@@ -14,52 +14,31 @@
    # Format 1: "1000" -- 1 second timeout
    # Format 2: "10000,60000" -- 10s timeout to first result, then 60s timeout for the rest of query.
    # See java doc for ARQ.queryTimeout
-   # ja:context [ ja:cxtName "arq:queryTimeout" ;  ja:cxtValue "10000" ] ;
+   ja:context [ ja:cxtName "arq:queryTimeout" ;  ja:cxtValue "10000" ] ;
 
    # ja:loadClass "your.code.Class" ;
 
-fuseki:services (
-     <#service1>
-     <#service_tdb_all>
-) .
-
-[] ja:loadClass "com.hp.hpl.jena.tdb.TDB" .
-tdb:DatasetTDB  rdfs:subClassOf  ja:RDFDataset .
-tdb:GraphTDB    rdfs:subClassOf  ja:Model .
 
 ## ---------------------------------------------------------------
 ## Updatable in-memory dataset.
 
 <#service1> rdf:type fuseki:Service ;
-    # URI of the dataset -- http://host:port/ds
-    fuseki:name                        "ds" ;
-    fuseki:serviceQuery                "sparql" ;
-    fuseki:serviceQuery                "query" ;
-    fuseki:serviceUpdate               "update" ;
-    fuseki:serviceUpload               "upload" ;
-    fuseki:serviceReadWriteGraphStore  "data" ;
-    fuseki:serviceReadGraphStore       "get" ;
-    fuseki:dataset                     <#Panda> ;
+    fuseki:name                       "ds" ;       # http://host:port/ds
+    fuseki:serviceQuery               "sparql" ;   # SPARQL query service
+    fuseki:serviceQuery               "query" ;    # SPARQL query service (alt name)
+    fuseki:serviceUpdate              "update" ;   # SPARQL update service
+    fuseki:serviceUpload              "upload" ;   # Non-SPARQL upload service
+    fuseki:serviceReadWriteGraphStore "data" ;     # SPARQL Graph store protocol (read and write)
+    # A separate read-only graph store endpoint:
+    fuseki:serviceReadGraphStore      "get" ;      # SPARQL Graph store protocol (read only)
+    fuseki:dataset                   <#dataset> ;
     .
-
-## In-memory, initially empty.
-<#Panda> rdf:type ja:RDFDataset .
 
 ## ---------------------------------------------------------------
 ## Updatable TDB dataset with all services enabled.
 
-<#service_tdb_all> rdf:type fuseki:Service ;
-    rdfs:label                      "TDB Service (RW)" ;
-    fuseki:name                     "data" ;
-    fuseki:serviceQuery             "query" ;
-    fuseki:serviceQuery             "sparql" ;
-    fuseki:serviceUpdate            "update" ;
-    fuseki:serviceUpload            "upload" ;
-    fuseki:serviceReadWriteGraphStore      "data" ;
-    # A separate read-only graph store endpoint:
-    fuseki:serviceReadGraphStore       "get" ;
-    fuseki:dataset           <#tdb_dataset_readwrite> ;
-    .
-
-<#tdb_dataset_readwrite> rdf:type tdb:DatasetTDB ;
-tdb:location "DB2" ;
+<#dataset> rdf:type      tdb:DatasetTDB ;
+    tdb:location "DB" ;
+    # Make the default graph be the union of all named graphs.
+    ## tdb:unionDefaultGraph true ;
+     .
