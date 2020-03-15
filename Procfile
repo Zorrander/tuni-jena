@@ -1,2 +1,2 @@
-web: ./fuseki-server --port=$PORT --config=run/config.ttl
+web: ./fuseki-server --port=$PORT
 private: ./fuseki-server --port=3030
