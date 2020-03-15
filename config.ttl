@@ -1,11 +1,6 @@
 
 # Licensed under the terms of http://www.apache.org/licenses/LICENSE-2.0
 
-## Basic Fuseki configuation file.
-##
-## See also config-tdb.ttl for TDB specific examples.
-## See also config-examples.ttl for commented examples.
-
 @prefix :        <#> .
 @prefix fuseki:  <http://jena.apache.org/fuseki#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -23,10 +18,14 @@
 
    # ja:loadClass "your.code.Class" ;
 
-   fuseki:services (
+fuseki:services (
      <#service1>
      <#service_tdb_all>
-   ) .
+) .
+
+[] ja:loadClass "com.hp.hpl.jena.tdb.TDB" .
+tdb:DatasetTDB  rdfs:subClassOf  ja:RDFDataset .
+tdb:GraphTDB    rdfs:subClassOf  ja:Model .
 
 ## ---------------------------------------------------------------
 ## Updatable in-memory dataset.
@@ -46,6 +45,8 @@
 ## In-memory, initially empty.
 <#Panda> rdf:type ja:RDFDataset .
 
+## ---------------------------------------------------------------
+## Updatable TDB dataset with all services enabled.
 
 <#service_tdb_all> rdf:type fuseki:Service ;
     rdfs:label                      "TDB Service (RW)" ;
