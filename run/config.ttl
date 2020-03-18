@@ -60,5 +60,5 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
 # The base data.
 <#baseModel> a ja:MemoryModel ;
     ja:content [
-      ja:externalContent <file:$FUSEKI_HOME/run/databases/books.ttl>;
+      ja:externalContent <file:databases/books.ttl>;
 ] .
