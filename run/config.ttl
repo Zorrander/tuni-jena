@@ -60,8 +60,8 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
 # The base data.
 <#baseModel> a ja:MemoryModel ;
     ja:content [
-      ja:externalContent <file:/databases/books.ttl>;
-      ja:externalContent <file:/databases/root-ontology.owl>;
-      ja:externalContent <file:/databases/cranfield.owl>;
-      ja:externalContent <file:/databases/skull.owl>;
+      ja:externalContent <file:/run/databases/books.ttl>;
+      ja:externalContent <file:/run/databases/root-ontology.owl>;
+      ja:externalContent <file:/run/databases/cranfield.owl>;
+      ja:externalContent <file:/run/databases/skull.owl>;
 ] .
