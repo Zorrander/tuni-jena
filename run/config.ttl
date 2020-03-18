@@ -46,19 +46,6 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
          .
 
 # Dataset with only the default graph.
-<#dataset> rdf:type       ja:RDFDataset ;
-  ja:defaultGraph       <#model_inf> ;
-          .
-
-# The inference model
-<#model_inf> a ja:InfModel ;
-    ja:baseModel <#baseModel> ;
-    ja:reasoner [
-        ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLFBRuleReasoner>
-    ] .
-
-# The base data.
-<#baseModel> a ja:MemoryModel ;
-    ja:content [
-      ja:externalContent <file:databases/root-ontology.owl>;
-] .
+<#dataset> rdf:type       tdb:DatasetTDB ;
+    tdb:location "databases" ;
+    .
