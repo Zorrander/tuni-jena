@@ -55,5 +55,5 @@
     # Query timeout on this dataset (1s, 1000 milliseconds)
     ja:context [ ja:cxtName "arq:queryTimeout" ;  ja:cxtValue "1000" ] ;
     # Make the default graph be the union of all named graphs.
-    ## tdb:unionDefaultGraph true ;
+    tdb:unionDefaultGraph true ;
      .
