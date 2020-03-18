@@ -24,9 +24,8 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
 
 <#dataset> rdf:type      ja:RDFDataset ;
      ja:defaultGraph <#graph> ;
-     tdb:unionDefaultGraph true ;
      ja:namedGraph
-        [ ja:graphName      <http://example.org/name1> ;
+        [ ja:graphName      <cobots> ;
           ja:graph          <#graph2> ] ;
      .
 
@@ -36,6 +35,8 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
 
 <#graph2> rdf:type ja:MemoryModel ;
      ja:content [
-      ja:externalContent <file:Data/root-ontology.owl>
+      ja:externalContent <file:Data/manipulations.owl> ;
+      ja:externalContent <file:Data/cranfield.owl> ;
+      ja:externalContent <file:Data/skull.owl> 
     ] ;
     .
