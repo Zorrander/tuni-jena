@@ -47,5 +47,5 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
 
 # Dataset with only the default graph.
 <#dataset> rdf:type       tdb:DatasetTDB ;
-    tdb:location "run/databases" ;
+    tdb:location "run/databases/books.ttl" ;
     .
