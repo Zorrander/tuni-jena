@@ -49,5 +49,5 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
       fuseki:dataset           <#graph> ;
          .
 <#graph> rdf:type tdb:DatasetTDB ;
-    tdb:location "DB" ;
+    tdb:location "databases/DB" ;
      .
