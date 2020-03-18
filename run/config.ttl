@@ -25,8 +25,6 @@
      <#service2>
    ) .
 
-
-
    <#service1> rdf:type fuseki:Service ;
        fuseki:name                       "ds" ;       # http://host:port/ds
        fuseki:serviceQuery               "query" ;    # SPARQL query service
@@ -39,10 +37,12 @@
        fuseki:dataset                   <#dataset-mem> ;
        .
 
-   <#dataset-mem> rdf:type ja:RDFDataset .
+ <#dataset-mem> rdf:type ja:RDFDataset .
 
-
-
+ # TDB
+ [] ja:loadClass "com.hp.hpl.jena.tdb.TDB" .
+ tdb:DatasetTDB rdfs:subClassOf ja:RDFDataset .
+ tdb:GraphTDB rdfs:subClassOf ja:Model .
 
  <#service2>  rdf:type fuseki:Service ;
     fuseki:name              "tdb" ;       # http://host:port/tdb
@@ -50,7 +50,7 @@
     fuseki:dataset           <#dataset> ;
     .
 
-<#dataset> rdf:type      tdb:DatasetTDB ;
+<#dataset> rdf:type tdb:DatasetTDB ;
     tdb:location "run/databases" ;
     # Query timeout on this dataset (1s, 1000 milliseconds)
     ja:context [ ja:cxtName "arq:queryTimeout" ;  ja:cxtValue "1000" ] ;
