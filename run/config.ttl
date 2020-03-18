@@ -36,6 +36,6 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
 
 <#graph2> rdf:type ja:MemoryModel ;
      ja:content [
-      ja:externalContent <file:Data/books.ttl>
+      ja:externalContent <file:Data/root-ontology.owl>
     ] ;
     .
