@@ -13,7 +13,7 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
 .
 
 <#service> rdf:type fuseki:Service ;
-    fuseki:name "dataset_name" ;
+    fuseki:name "Panda" ;
     fuseki:serviceQuery "query" , "sparql" ;
     fuseki:serviceUpdate "update" ;
     fuseki:serviceUpload "upload" ;
@@ -24,6 +24,7 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
 
 <#dataset> rdf:type      ja:RDFDataset ;
      ja:defaultGraph <#graph> ;
+     tdb:unionDefaultGraph true ;
      ja:namedGraph
         [ ja:graphName      <http://example.org/name1> ;
           ja:graph          <#graph2> ] ;
@@ -37,4 +38,4 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
      ja:content [
       ja:externalContent <file:Data/books.ttl>
     ] ;
-     .
+    .
