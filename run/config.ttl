@@ -43,9 +43,16 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
       ja:externalContent <file:databases/data.ttl>
     ] ;
 
-    ja:reasoner [
-      ja:reasonerURL <http://jena.hpl.hp.com/2003/RDFSExptRuleReasoner> ;
-      ja:reasonerURL <http://jena.hpl.hp.com/2003/GenericRuleReasoner> ;
-      ja:rulesFrom <file:databases/reasoning_rules.rules> ;
-    ] ;
+
+    #Disable OWL based reasoner
+    ja:reasoner [ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLFBRuleReasoner>] ;
+
+    #Disable RDFS based reasoner
+    #ja:reasoner [ja:reasonerURL <http://jena.hpl.hp.com/2003/RDFSExptRuleReasoner>] ;
+
+    #Enable Jena Rules based reasoner using the myrules.rules file
+    #ja:reasoner [
+    #  ja:reasonerURL <http://jena.hpl.hp.com/2003/GenericRuleReasoner> ;
+    #  ja:rulesFrom <file:databases/reasoning_rules.rules> ;
+    #] ;
     .
