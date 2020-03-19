@@ -8,9 +8,9 @@
 @prefix fuseki: <http://jena.apache.org/fuseki#> .
 
 
-:service1        a                        fuseki:Service ;
+:service        a                      fuseki:Service ;
       fuseki:dataset                    :dataset ;
-      fuseki:name                       "Network" ;
+      fuseki:name                       "Panda" ;
       fuseki:serviceQuery               "query" , "sparql" ;
       fuseki:serviceReadGraphStore      "get" ;
       fuseki:serviceReadWriteGraphStore "data" ;
@@ -18,9 +18,9 @@
       fuseki:serviceUpload              "upload" .
 
 :dataset         rdf:type ja:RDFDataset ;
-  rdfs:label "Network" ;
+  rdfs:label "Panda" ;
   ja:defaultGraph
-    [ rdfs:label "Network" ;
+    [ rdfs:label "Panda" ;
       a ja:InfModel ;
 
       #Reference to model.ttl file
