@@ -27,14 +27,14 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
      ja:defaultGraph <#graph> ;
      ja:namedGraph
         [ ja:graphName      <http://onto-server-tuni.herokuapp.com/cobots> ;
-          ja:graph          <#graph2> ] ;
+          ja:graph          <#model_inf> ] ;
      .
 
 <#graph> rdf:type tdb:GraphTDB ;
     tdb:location "run/databases" ;
     .
 
-<#graph2> rdf:type ja:InfModel ;
+<#model_inf> rdf:type ja:InfModel ;
      ja:content [
       ja:externalContent <file:databases/manipulations.owl> ;
       ja:externalContent <file:databases/cranfield.owl> ;
