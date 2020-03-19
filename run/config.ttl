@@ -1,51 +1,45 @@
 # Licensed under the terms of http://www.apache.org/licenses/LICENSE-2.0
 
-PREFIX :        <#>
-PREFIX fuseki:  <http://jena.apache.org/fuseki#>
-PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX tdb:     <http://jena.hpl.hp.com/2008/tdb#>
-PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
+@prefix :      <http://base/#> .
+@prefix tdb:   <http://jena.hpl.hp.com/2008/tdb#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ja:    <http://jena.hpl.hp.com/2005/11/Assembler#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix fuseki: <http://jena.apache.org/fuseki#> .
 
-[] rdf:type fuseki:Server ;
-  fuseki:services (
-    <#service>
-  )
-.
 
-<#service> rdf:type fuseki:Service ;
-    fuseki:name "Panda" ;
-    fuseki:serviceQuery "query" , "sparql" ;
-    fuseki:serviceUpdate "update" ;
-    fuseki:serviceUpload "upload" ;
-    fuseki:serviceReadWriteGraphStore "data" ;
-    fuseki:serviceReadGraphStore "get" ;
-    fuseki:dataset <#dataset>  ;
-    .
+:service1        a                        fuseki:Service ;
+      fuseki:dataset                    :dataset ;
+      fuseki:name                       "Network" ;
+      fuseki:serviceQuery               "query" , "sparql" ;
+      fuseki:serviceReadGraphStore      "get" ;
+      fuseki:serviceReadWriteGraphStore "data" ;
+      fuseki:serviceUpdate              "update" ;
+      fuseki:serviceUpload              "upload" .
 
-<#dataset> rdf:type      ja:RDFDataset ;
-     ja:defaultGraph <#model_inf> ;
-     .
+:dataset         rdf:type ja:RDFDataset ;
+  rdfs:label "Network" ;
+  ja:defaultGraph
+    [ rdfs:label "Network" ;
+      a ja:InfModel ;
 
-<#model_inf> rdf:type ja:InfModel ;
-     ja:content [
-      ja:externalContent <file:Data/manipulations.owl> ;
-      ja:externalContent <file:Data/cranfield.owl> ;
-      ja:externalContent <file:Data/skull.owl> ;
-      ja:externalContent <file:Data/model.ttl> ;
-      ja:externalContent <file:Data/data.ttl>
+      #Reference to model.ttl file
+      ja:content [ja:externalContent <file:Data/manipulations.owl> ] ;
+      ja:content [ja:externalContent <file:Data/cranfield.owl> ] ;
+      ja:content [ja:externalContent <file:Data/skull.owl> ] ;
+      ja:content [ja:externalContent <file:Data/model.ttl> ] ;
+      ja:content [ja:externalContent <file:Data/data.ttl> ] ;
+
+      #Disable OWL based reasoner
+      ja:reasoner [ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLFBRuleReasoner>] ;
+
+      #Disable RDFS based reasoner
+      #ja:reasoner [ja:reasonerURL <http://jena.hpl.hp.com/2003/RDFSExptRuleReasoner>] ;
+
+      #Enable Jena Rules based reasoner using the myrules.rules file
+      #ja:reasoner [
+      #    ja:reasonerURL <http://jena.hpl.hp.com/2003/GenericRuleReasoner> ;
+      #    ja:rulesFrom </usr/local/var/fuseki/databases/Network/myrules.rules> ;
+      #] ;
     ] ;
-
-
-    #Disable OWL based reasoner
-    ja:reasoner [ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLFBRuleReasoner>] ;
-
-    #Disable RDFS based reasoner
-    #ja:reasoner [ja:reasonerURL <http://jena.hpl.hp.com/2003/RDFSExptRuleReasoner>] ;
-
-    #Enable Jena Rules based reasoner using the myrules.rules file
-    #ja:reasoner [
-    #  ja:reasonerURL <http://jena.hpl.hp.com/2003/GenericRuleReasoner> ;
-    #  ja:rulesFrom <file:Data/reasoning_rules.rules> ;
-    #] ;
-    .
+   .
