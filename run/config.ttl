@@ -3,6 +3,7 @@
 PREFIX :        <#>
 PREFIX fuseki:  <http://jena.apache.org/fuseki#>
 PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX tdb:     <http://jena.hpl.hp.com/2008/tdb#>
 PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
 
@@ -25,7 +26,7 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
 <#dataset> rdf:type      ja:RDFDataset ;
      ja:defaultGraph <#graph> ;
      ja:namedGraph
-        [ ja:graphName      <cobots> ;
+        [ ja:graphName      <http://onto-server-tuni.herokuapp.com/cobots> ;
           ja:graph          <#graph2> ] ;
      .
 
@@ -35,8 +36,17 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
 
 <#graph2> rdf:type ja:MemoryModel ;
      ja:content [
-      ja:externalContent <file:Data/manipulations.owl> ;
-      ja:externalContent <file:Data/cranfield.owl> ;
-      ja:externalContent <file:Data/skull.owl> 
+      ja:externalContent <file:databases/manipulations.owl> ;
+      ja:externalContent <file:databases/cranfield.owl> ;
+      ja:externalContent <file:databases/skull.owl>
+      ja:externalContent <file:databases/model.ttl> ;
+      ja:externalContent <file:databases/data.ttl>
+    ] ;
+
+    ja:reasoner [ja:reasonerURL <http://jena.hpl.hp.com/2003/RDFSExptRuleReasoner> ] ;
+
+    ja:reasoner [
+      ja:reasonerURL <http://jena.hpl.hp.com/2003/GenericRuleReasoner> ;
+      ja:rulesFrom <file:databases/reasoning_rules.rules> ;
     ] ;
     .
