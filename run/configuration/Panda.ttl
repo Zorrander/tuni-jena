@@ -24,11 +24,11 @@
       a ja:InfModel ;
 
       #Reference to model.ttl file
-      ja:content [ja:externalContent <file:Data/manipulations.owl> ] ;
-      ja:content [ja:externalContent <file:Data/cranfield.owl> ] ;
-      ja:content [ja:externalContent <file:Data/skull.owl> ] ;
-      ja:content [ja:externalContent <file:Data/model.ttl> ] ;
-      ja:content [ja:externalContent <file:Data/data.ttl> ] ;
+      ja:content [ja:externalContent <file:/Data/manipulations.owl> ] ;
+      ja:content [ja:externalContent <file:/Data/cranfield.owl> ] ;
+      ja:content [ja:externalContent <file:/Data/skull.owl> ] ;
+      ja:content [ja:externalContent <file:/Data/model.ttl> ] ;
+      ja:content [ja:externalContent <file:/Data/data.ttl> ] ;
 
       #Disable OWL based reasoner
       ja:reasoner [ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLFBRuleReasoner>] ;
