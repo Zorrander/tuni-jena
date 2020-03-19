@@ -34,7 +34,7 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
     tdb:location "run/databases" ;
     .
 
-<#graph2> rdf:type ja:MemoryModel ;
+<#graph2> rdf:type ja:InfModel ;
      ja:content [
       ja:externalContent <file:databases/manipulations.owl> ;
       ja:externalContent <file:databases/cranfield.owl> ;
