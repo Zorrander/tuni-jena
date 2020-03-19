@@ -24,15 +24,8 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
     .
 
 <#dataset> rdf:type      ja:RDFDataset ;
-     ja:defaultGraph <#graph> ;
-     ja:namedGraph
-        [ ja:graphName      <http://onto-server-tuni.herokuapp.com/cobots> ;
-          ja:graph          <#model_inf> ] ;
+     ja:defaultGraph <#model_inf> ;
      .
-
-<#graph> rdf:type tdb:GraphTDB ;
-    tdb:location "run/databases" ;
-    .
 
 <#model_inf> rdf:type ja:InfModel ;
      ja:content [
