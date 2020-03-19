@@ -38,7 +38,7 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
      ja:content [
       ja:externalContent <file:databases/manipulations.owl> ;
       ja:externalContent <file:databases/cranfield.owl> ;
-      ja:externalContent <file:databases/skull.owl>
+      ja:externalContent <file:databases/skull.owl> ;
       ja:externalContent <file:databases/model.ttl> ;
       ja:externalContent <file:databases/data.ttl>
     ] ;
