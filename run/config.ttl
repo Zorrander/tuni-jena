@@ -29,11 +29,11 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
 
 <#model_inf> rdf:type ja:InfModel ;
      ja:content [
-      ja:externalContent <file:databases/manipulations.owl> ;
-      ja:externalContent <file:databases/cranfield.owl> ;
-      ja:externalContent <file:databases/skull.owl> ;
-      ja:externalContent <file:databases/model.ttl> ;
-      ja:externalContent <file:databases/data.ttl>
+      ja:externalContent <file:Data/manipulations.owl> ;
+      ja:externalContent <file:Data/cranfield.owl> ;
+      ja:externalContent <file:Data/skull.owl> ;
+      ja:externalContent <file:Data/model.ttl> ;
+      ja:externalContent <file:Data/data.ttl>
     ] ;
 
 
@@ -46,6 +46,6 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
     #Enable Jena Rules based reasoner using the myrules.rules file
     #ja:reasoner [
     #  ja:reasonerURL <http://jena.hpl.hp.com/2003/GenericRuleReasoner> ;
-    #  ja:rulesFrom <file:databases/reasoning_rules.rules> ;
+    #  ja:rulesFrom <file:Data/reasoning_rules.rules> ;
     #] ;
     .
