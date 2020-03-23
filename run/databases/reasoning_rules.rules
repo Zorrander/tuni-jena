@@ -7,4 +7,9 @@
 
 @include <OWL> .
 
-[graspingRule: (?p1 ns:knows ?p2) (?p2 ns:knows ?p3)-> (?p1 ns:knows ?p3)]
+// Create steps individuals for planning
+[handoverCmd: (?s rdf:type ns:Person)
+                            -> makeInstance(ns:Don_Quijote  rdf:type, ?v)]
+
+//[handoverCmd: (?cmd rdf:type cogrob:Command) (?cmd cogrob:asks cogrob:Handover)
+//                            -> makeInstance(cogrob:Handover cogrob:first ?v)]
