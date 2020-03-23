@@ -12,4 +12,5 @@
                             -> makeInstance(ns:Don_Quijote  rdf:type, ?v)]
 
 //[handoverCmd: (?cmd rdf:type cogrob:Command) (?cmd cogrob:asks cogrob:Handover)
-//                            -> makeInstance(cogrob:Handover cogrob:first ?v)]
+//                            -> makeInstance(cogrob:Handover cogrob:first ?actionX)
+//                               makeInstance(?actionX cogrob:then ?actionY)]
