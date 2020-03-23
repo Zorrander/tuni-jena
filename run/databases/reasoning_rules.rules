@@ -7,5 +7,3 @@
 
 
 [graspingRule: (?p1 ns:knows ?p2) (?p2 ns:knows ?p3)-> (?p1 ns:knows ?p3)]
-
-[reachingRule: (?p1 ns:knows ?p2) (?p2 !ns:knows ns:Don_Quijote) -> (?p2 ns:knows ns:Don_Quijote)]
