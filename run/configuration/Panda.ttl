@@ -38,7 +38,7 @@
       #Enable Jena Rules based reasoner using the myrules.rules file
       ja:reasoner [
           ja:reasonerURL <http://jena.hpl.hp.com/2003/GenericRuleReasoner> ;
-          ja:rulesFrom   ja:rulesFrom   <file:/app/run/databases/reasoning_rules.ttl> ;
+          ja:rulesFrom   <file:/app/run/databases/reasoning_rules.ttl> ;
       ] ;
     ] ;
    .
