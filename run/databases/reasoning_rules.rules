@@ -7,10 +7,18 @@
 
 @include <OWL> .
 
-// Create steps individuals for planning
-[handoverCmd: (?s rdf:type ns:Person)
-                            -> makeInstance(ns:Don_Quijote  rdf:type, ?v)]
+// React to handover commands
+[handoverCmd: (?cmd rdf:type cogrob:CmdEvent), (?cmd cogrob:has_action 'give'),
+                                                   (?cmd cogrob:has_target ?thing)
+              -> (cogrob:graspEventInd a cogrob:GraspEvent),
+                  (cogrob:graspEventInd cogrob:actsOn ?thing)]
 
-//[handoverCmd: (?cmd rdf:type cogrob:Command) (?cmd cogrob:asks cogrob:Handover)
-//                            -> makeInstance(cogrob:Handover cogrob:first ?actionX)
-//                               makeInstance(?actionX cogrob:then ?actionY)]
+// Create an event to reach for the object
+[moveArm: (?grasp a cogrob:GraspEvent), (?grasp cogrob:actsOn ?thing),
+                    noValue(?thing cogrob:isInReachOf ?actor), noValue(?grasp cogrob:isDone "true")
+              -> (cogrob:moveArmInd a cogrob:ArmEvent), (cogrob:moveArmInd cogrob:actsOn ?thing)]
+
+// Create an event to properly grasp the object
+[moveGripper: (?grasp rdf:type cogrob:GraspEvent), (?grasp cogrob:actsOn ?thing),
+                                                      (?thing cogrob:isInReachOf ?actor)
+              -> (cogrob:moveGripperInd a cogrob:GripperEvent), (cogrob:moveGripperInd cogrob:actsOn ?thing)]
