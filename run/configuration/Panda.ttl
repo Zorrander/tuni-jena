@@ -30,15 +30,15 @@
       ja:content [ja:externalContent <file:/app/run/databases/data.ttl> ] ;
 
       #Disable OWL based reasoner
-      ja:reasoner [ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLFBRuleReasoner>] ;
+      #ja:reasoner [ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLFBRuleReasoner>] ;
 
       #Disable RDFS based reasoner
       #ja:reasoner [ja:reasonerURL <http://jena.hpl.hp.com/2003/RDFSExptRuleReasoner>] ;
 
       #Enable Jena Rules based reasoner using the myrules.rules file
-      #ja:reasoner [
-      #    ja:reasonerURL <http://jena.hpl.hp.com/2003/GenericRuleReasoner> ;
-      #    ja:rulesFrom </usr/local/var/fuseki/databases/Network/myrules.rules> ;
-      #] ;
+      ja:reasoner [
+          ja:reasonerURL <http://jena.hpl.hp.com/2003/GenericRuleReasoner> ;
+          ja:rulesFrom   <file:/app/run/databases/reasoning_rules.ttl> ] ;
+      ] ;
     ] ;
    .

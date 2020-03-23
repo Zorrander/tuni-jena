@@ -4,4 +4,10 @@
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
-[ruleKnows: (ns:knows rdf:type owl:SymmetricProperty) (?s ns:knows ?o) -> (?o ns:knows ?s)]
+
+
+[graspingRule: (?p1 ns:knows ?p2) (?p2 ns:knows ?p3)
+                            -> (?p1 ns:knows ?p3)]
+
+[reachingRule: (?p1 ns:knows ?p2) (?p2 !ns:knows ns:Don_Quijote)
+                            -> (?p2 ns:knows ns:Don_Quijote)]
