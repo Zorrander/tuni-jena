@@ -3,9 +3,8 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix cogrob: <https://onto-server-tuni.herokuapp.com/Panda#> .
 
-
+@include <OWL> .
 
 [graspingRule: (?p1 ns:knows ?p2) (?p2 ns:knows ?p3)-> (?p1 ns:knows ?p3)]
-
-[reachingRule: (?p1 ns:knows ?p2) (?p2 !ns:knows ns:Don_Quijote) -> (?p2 ns:knows ns:Don_Quijote)]
