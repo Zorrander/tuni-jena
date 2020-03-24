@@ -17,12 +17,12 @@
               -> (cogrob:moveArmInd2 rdf:type cogrob:ArmEvent) (cogrob:moveArmInd1 cogrob:actsOn ?thing)
                 (cogrob:moveArmInd1 cogrob:withPath cogrob:moveArmPath) (cogrob:moveArmPath rdf:type cogrob:Toward)
                 (cogrob:moveArmPath cogrob:withPlace cogrob:InFunction) (cogrob:InFunction rdf:type cogrob:Inside)
-                (cogrob:Inside cogrob:withPlace cogrob:HumanHands)]
+                (cogrob:Inside cogrob:withPlace ?hand (cogrob:Human hasHand ?hand)]
 
 // Create an event to reach for the object if trying to grasp an object too far from the gripper
 [moveArm: (?event rdf:type cogrob:ManipulationTask) (?event cogrob:actsOn ?thing) (?event cogrob:involves ?actor) noValue(?actor cogrob:isHolding ?thing)
                       noValue(?thing cogrob:isInReachOf ?actor) noValue(?grasp cogrob:isDone "true") (?actor cogrob:isHoldingSomething "false")
-              -> (cogrob:moveArmInd1 rdf:type cogrob:ArmEvent) (cogrob:moveArmInd cogrob:actsOn ?thing)]
+              -> (cogrob:moveArmInd1 rdf:type cogrob:ArmEvent) (cogrob:moveArmInd1 cogrob:actsOn ?thing)]
 
 // Create an event to properly grasp the object
 [moveGripper: (?grasp rdf:type cogrob:ManipulationTask) (?grasp cogrob:actsOn ?thing) noValue(?actor cogrob:isHolding ?thing)
