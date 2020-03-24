@@ -1,285 +1,326 @@
 <?xml version="1.0"?>
-<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+<rdf:RDF xmlns="http://onto-server-tuni.herokuapp.com/Panda#"
      xml:base="http://onto-server-tuni.herokuapp.com/Panda"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     ontologyIRI="http://onto-server-tuni.herokuapp.com/Panda">
-    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
-    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
-    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
-    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
-    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
-    <Prefix name="cogrob" IRI="http://onto-server-tuni.herokuapp.com/Panda#"/>
-    <Declaration>
-        <Class IRI="#Action"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Actor"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#ArmEvent"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Be"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Cause"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Command"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Cup"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Event"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#From"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Go"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#GripperEvent"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Handover"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#HumanAgent"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Inside"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#ManipulationTask"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Object"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#On"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Path"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#PhysicalPlace"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Pick"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Place"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#PlaceFunction"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Robot"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#SpatialPlace"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#State"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Stay"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#To"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Under"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#has_action"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#has_target"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#involves"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#isHolding"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#isInReachOf"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#isDone"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#isHoldingSomething"/>
-    </Declaration>
-    <SubClassOf>
-        <Class IRI="#ArmEvent"/>
-        <Class IRI="#Action"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Be"/>
-        <Class IRI="#State"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Cause"/>
-        <Class IRI="#Event"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Command"/>
-        <Class IRI="#Event"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Cup"/>
-        <Class IRI="#Object"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#From"/>
-        <Class IRI="#Path"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Go"/>
-        <Class IRI="#Event"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#GripperEvent"/>
-        <Class IRI="#Action"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Handover"/>
-        <Class IRI="#ManipulationTask"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#HumanAgent"/>
-        <Class IRI="#Actor"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Inside"/>
-        <Class IRI="#PlaceFunction"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ManipulationTask"/>
-        <Class IRI="#Cause"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#On"/>
-        <Class IRI="#PlaceFunction"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#PhysicalPlace"/>
-        <Class IRI="#SpatialPlace"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Pick"/>
-        <Class IRI="#Cause"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Place"/>
-        <Class IRI="#ManipulationTask"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#PlaceFunction"/>
-        <Class IRI="#SpatialPlace"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Robot"/>
-        <Class IRI="#Actor"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Stay"/>
-        <Class IRI="#Event"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#To"/>
-        <Class IRI="#Path"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Under"/>
-        <Class IRI="#PlaceFunction"/>
-    </SubClassOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#has_action"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#has_target"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#involves"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#isInReachOf"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#has_action"/>
-        <Class IRI="#Event"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#has_target"/>
-        <Class IRI="#Event"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#involves"/>
-        <Class IRI="#Cause"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#isHolding"/>
-        <Class IRI="#Actor"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#isInReachOf"/>
-        <Class IRI="#Object"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#has_target"/>
-        <Class IRI="#SpatialPlace"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#involves"/>
-        <Class IRI="#Actor"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#isHolding"/>
-        <Class IRI="#Object"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#isInReachOf"/>
-        <Class IRI="#Actor"/>
-    </ObjectPropertyRange>
-    <SubDataPropertyOf>
-        <DataProperty IRI="#isDone"/>
-        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
-    </SubDataPropertyOf>
-    <SubDataPropertyOf>
-        <DataProperty IRI="#isHoldingSomething"/>
-        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
-    </SubDataPropertyOf>
-    <DataPropertyDomain>
-        <DataProperty IRI="#isDone"/>
-        <Class IRI="#Event"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#isHoldingSomething"/>
-        <Class IRI="#Actor"/>
-    </DataPropertyDomain>
-    <DataPropertyRange>
-        <DataProperty IRI="#isDone"/>
-        <Datatype abbreviatedIRI="xsd:boolean"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#isHoldingSomething"/>
-        <Datatype abbreviatedIRI="xsd:boolean"/>
-    </DataPropertyRange>
-</Ontology>
+     xmlns:cogrob="http://onto-server-tuni.herokuapp.com/Panda#">
+    <owl:Ontology rdf:about="http://onto-server-tuni.herokuapp.com/Panda"/>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#has_action -->
+
+    <owl:ObjectProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#has_action">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Event"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#has_target -->
+
+    <owl:ObjectProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#has_target">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Event"/>
+        <rdfs:range rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#SpatialPlace"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#involves -->
+
+    <owl:ObjectProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#involves">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Cause"/>
+        <rdfs:range rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Actor"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#isHolding -->
+
+    <owl:ObjectProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#isHolding">
+        <rdfs:domain rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Actor"/>
+        <rdfs:range rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Object"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#isInReachOf -->
+
+    <owl:ObjectProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#isInReachOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Object"/>
+        <rdfs:range rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Actor"/>
+    </owl:ObjectProperty>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#isDone -->
+
+    <owl:DatatypeProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#isDone">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Event"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#isHoldingSomething -->
+
+    <owl:DatatypeProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#isHoldingSomething">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Actor"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Action -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Action"/>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Actor -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Actor"/>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#ArmEvent -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#ArmEvent">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Action"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Be -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Be">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#State"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Cause -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Cause">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Event"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Command -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Command">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Event"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Cup -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Cup">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Object"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Event -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Event"/>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#From -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#From">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Path"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Go -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Go">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Event"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#GripperEvent -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#GripperEvent">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Action"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Handover -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Handover">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#ManipulationTask"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#HumanAgent -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#HumanAgent">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Actor"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Inside -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Inside">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#PlaceFunction"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#ManipulationTask -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#ManipulationTask">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Cause"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Object -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Object"/>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#On -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#On">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#PlaceFunction"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Path -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Path"/>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#PhysicalPlace -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#PhysicalPlace">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#SpatialPlace"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Pick -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Pick">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Cause"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Place -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Place">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#ManipulationTask"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#PlaceFunction -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#PlaceFunction">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#SpatialPlace"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Robot -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Robot">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Actor"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#SpatialPlace -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#SpatialPlace"/>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#State -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#State"/>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Stay -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Stay">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Event"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#To -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#To">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Path"/>
+    </owl:Class>
+
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Under -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Under">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#PlaceFunction"/>
+    </owl:Class>
+</rdf:RDF>
 
 
 
 <!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
-
