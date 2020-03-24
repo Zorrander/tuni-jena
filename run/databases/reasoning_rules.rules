@@ -14,8 +14,8 @@
 // Create an event to give an object after handoverCmd and acquiring the object
 [handoverRule: (?event rdf:type cogrob:Handover) (?event cogrob:actsOn ?thing) (?event cogrob:involves cogrob:Robot)
                     (cogrob:Robot cogrob:isHolding ?thing) noValue(?grasp cogrob:isDone "true")
-              -> (cogrob:moveArmInd2 rdf:type cogrob:ArmEvent) (cogrob:moveArmInd1 cogrob:actsOn ?thing)
-                (cogrob:moveArmInd1 cogrob:withPath cogrob:moveArmPath) (cogrob:moveArmPath rdf:type cogrob:Toward)
+              -> (cogrob:moveArmInd2 rdf:type cogrob:ArmEvent) (cogrob:moveArmInd2 cogrob:actsOn ?thing)
+                (cogrob:moveArmInd2 cogrob:withPath cogrob:moveArmPath) (cogrob:moveArmPath rdf:type cogrob:Toward)
                 (cogrob:moveArmPath cogrob:withPlace cogrob:InFunction) (cogrob:InFunction rdf:type cogrob:Inside)
                 (cogrob:Inside cogrob:withPlace ?hand (cogrob:Human hasHand ?hand)]
 
