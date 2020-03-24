@@ -12,21 +12,21 @@
                 -> (cogrob:handoverInd rdf:type cogrob:Handover) (cogrob:handoverInd cogrob:actsOn ?thing)]
 
 // Create an event to grasp an object in the case where the actor is not holding anything
-[pickRule: (?grasp a cogrob:ManipulationTask), (?grasp cogrob:actsOn ?thing), (?grasp cogrob:involves ?actor),
-                    noValue(?actor cogrob:isHolding ?thing), noValue(?grasp cogrob:isDone "true")
-              -> (cogrob:pickObject a cogrob:Pick), (cogrob:pickObject cogrob:actsOn ?thing)]
+[pickRule: (?grasp cogrob:actsOn ?thing) (?grasp cogrob:involves ?actor)
+                    noValue(?actor cogrob:isHolding ?thing) noValue(?grasp cogrob:isDone "true")
+              -> (cogrob:pickObject rdf:type cogrob:Pick) (cogrob:pickObject cogrob:actsOn ?thing)]
 
 // Create an event to give an object after handoverCmd and acquiring the object
-[giveRule: (?grasp a cogrob:ManipulationTask), (?grasp cogrob:actsOn ?thing), (?grasp cogrob:involves ?actor),
-                    (?actor cogrob:isHolding ?thing), noValue(?grasp cogrob:isDone "true")
-              -> (cogrob:giveObject a cogrob:Handover), (cogrob:giveObject cogrob:actsOn ?thing)]
+[giveRule: (?grasp cogrob:actsOn ?thing) (?grasp cogrob:involves ?actor)
+                    (?actor cogrob:isHolding ?thing) noValue(?grasp cogrob:isDone "true")
+              -> (cogrob:giveObject rdf:type cogrob:Handover) (cogrob:giveObject cogrob:actsOn ?thing)]
 
 // Create an event to reach for the object if trying to grasp an object too far from the gripper
-[moveArm: (?grasp a cogrob:Pick), (?grasp cogrob:actsOn ?thing), (?grasp cogrob:involves ?actor),
-                      noValue(?thing cogrob:isInReachOf ?actor), noValue(?grasp cogrob:isDone "true"), (?actor cogrob:isHoldingSomething "false")
-              -> (cogrob:moveArmInd a cogrob:ArmEvent), (cogrob:moveArmInd cogrob:actsOn ?thing)]
+[moveArm: (?grasp cogrob:actsOn ?thing) (?grasp cogrob:involves ?actor)
+                      noValue(?thing cogrob:isInReachOf ?actor) noValue(?grasp cogrob:isDone "true") (?actor cogrob:isHoldingSomething "false")
+              -> (cogrob:moveArmInd rdf:type cogrob:ArmEvent) (cogrob:moveArmInd cogrob:actsOn ?thing)]
 
 // Create an event to properly grasp the object
-[moveGripper: (?grasp a cogrob:Pick), (?grasp cogrob:actsOn ?thing),
-                      (?grasp cogrob:involves ?actor), (?thing cogrob:isInReachOf ?actor), (?actor cogrob:isHoldingSomething "false")
-              -> (cogrob:moveGripperInd a cogrob:GripperEvent), (cogrob:moveGripperInd cogrob:actsOn ?thing)]
+[moveGripper: (?grasp rdf:type cogrob:Pick) (?grasp cogrob:actsOn ?thing)
+                      (?grasp cogrob:involves ?actor) (?thing cogrob:isInReachOf ?actor) (?actor cogrob:isHoldingSomething "false")
+              -> (cogrob:moveGripperInd rdf:type cogrob:GripperEvent) (cogrob:moveGripperInd cogrob:actsOn ?thing)]
