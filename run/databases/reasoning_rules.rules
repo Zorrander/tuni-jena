@@ -21,7 +21,7 @@
 
 // Create an event to reach for the object if trying to grasp an object too far from the gripper
 [moveArm: (?event rdf:type cogrob:ManipulationTask) (?event cogrob:actsOn ?thing) (?event cogrob:involves ?actor) noValue(?actor cogrob:isHolding ?thing)
-                      noValue(?thing cogrob:isInReachOf ?actor) noValue(?grasp cogrob:isDone "true") (?actor cogrob:isHoldingSomething "false")
+                      noValue(?thing cogrob:isInReachOf ?actor) noValue(?event cogrob:isDone "true") (?actor cogrob:isHoldingSomething "false")
               -> (cogrob:moveArmInd1 rdf:type cogrob:ArmEvent) (cogrob:moveArmInd1 cogrob:actsOn ?thing)]
 
 // Create an event to properly grasp the object
