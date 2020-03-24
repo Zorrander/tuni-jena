@@ -3,13 +3,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
-@prefix cogrob: <https://onto-server-tuni.herokuapp.com/Panda#> .
+@prefix cogrob: <http://onto-server-tuni.herokuapp.com/Panda#> .
 
 @include <OWL> .
 
 // React to handover commands
 [handoverCmd: (?cmd a cogrob:Command), (?cmd cogrob:has_action 'give'),
-                                                   (?cmd cogrob:has_target ?thing)
+                                                   (?cmd cogrob:has_action 'give')
               -> (cogrob:handoverInd a cogrob:Handover),
                   (cogrob:handoverInd cogrob:actsOn ?thing)]
 
