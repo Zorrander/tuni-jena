@@ -1,0 +1,285 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://onto-server-tuni.herokuapp.com/Panda"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://onto-server-tuni.herokuapp.com/Panda">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="cogrob" IRI="http://onto-server-tuni.herokuapp.com/Panda#"/>
+    <Declaration>
+        <Class IRI="#Action"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Actor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ArmEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Be"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cause"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Command"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Event"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#From"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Go"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GripperEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Handover"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HumanAgent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Inside"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ManipulationTask"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Object"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#On"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Path"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysicalPlace"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pick"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Place"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PlaceFunction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Robot"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpatialPlace"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#State"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Stay"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#To"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Under"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#has_action"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#has_target"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#involves"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isHolding"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isInReachOf"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#isDone"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#isHoldingSomething"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#ArmEvent"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Be"/>
+        <Class IRI="#State"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cause"/>
+        <Class IRI="#Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Command"/>
+        <Class IRI="#Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cup"/>
+        <Class IRI="#Object"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#From"/>
+        <Class IRI="#Path"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Go"/>
+        <Class IRI="#Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GripperEvent"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Handover"/>
+        <Class IRI="#ManipulationTask"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HumanAgent"/>
+        <Class IRI="#Actor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Inside"/>
+        <Class IRI="#PlaceFunction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ManipulationTask"/>
+        <Class IRI="#Cause"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#On"/>
+        <Class IRI="#PlaceFunction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PhysicalPlace"/>
+        <Class IRI="#SpatialPlace"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pick"/>
+        <Class IRI="#Cause"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Place"/>
+        <Class IRI="#ManipulationTask"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlaceFunction"/>
+        <Class IRI="#SpatialPlace"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Robot"/>
+        <Class IRI="#Actor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Stay"/>
+        <Class IRI="#Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#To"/>
+        <Class IRI="#Path"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Under"/>
+        <Class IRI="#PlaceFunction"/>
+    </SubClassOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#has_action"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#has_target"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#involves"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isInReachOf"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#has_action"/>
+        <Class IRI="#Event"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#has_target"/>
+        <Class IRI="#Event"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#involves"/>
+        <Class IRI="#Cause"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isHolding"/>
+        <Class IRI="#Actor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isInReachOf"/>
+        <Class IRI="#Object"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#has_target"/>
+        <Class IRI="#SpatialPlace"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#involves"/>
+        <Class IRI="#Actor"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isHolding"/>
+        <Class IRI="#Object"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isInReachOf"/>
+        <Class IRI="#Actor"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#isDone"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#isHoldingSomething"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isDone"/>
+        <Class IRI="#Event"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isHoldingSomething"/>
+        <Class IRI="#Actor"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#isDone"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#isHoldingSomething"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
