@@ -9,7 +9,7 @@
 
 // React to handover commands
 [handoverCmd: (?cmd a cogrob:Command), (?cmd cogrob:has_action 'give'),
-                                                   (?cmd cogrob:has_action 'give')
+                                                   (?cmd cogrob:has_target ?thing)
               -> (cogrob:handoverInd a cogrob:Handover),
                   (cogrob:handoverInd cogrob:actsOn ?thing)]
 
@@ -32,3 +32,23 @@
 [moveGripper: (?grasp a cogrob:Pick), (?grasp cogrob:actsOn ?thing),
                       (?grasp cogrob:involves ?actor), (?thing cogrob:isInReachOf ?actor), (?actor cogrob:isHoldingSomething "false")
               -> (cogrob:moveGripperInd a cogrob:GripperEvent), (cogrob:moveGripperInd cogrob:actsOn ?thing)]
+
+
+              prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+              prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+              prefix owl:  <http://www.w3.org/2002/07/owl#>
+              prefix xsd:  <http://www.w3.org/2001/XMLSchema#>
+              prefix cogrob: <http://onto-server-tuni.herokuapp.com/Panda#>
+              SELECT ?s
+              WHERE {
+                   ?s a cogrob:Handover
+              }
+              LIMIT 25
+
+
+
+INSERT DATA {
+   cogrob:manipTest rdf:Type cogrob:Command ;
+					 cogrob:has_action 'give' ;
+					 cogrob:has_target cogrob:Cup .
+}
