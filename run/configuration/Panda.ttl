@@ -23,9 +23,7 @@
     [ rdfs:label "Panda" ;
       a ja:InfModel ;
 
-      #ja:content [ja:externalContent <file:///app/run/databases/manipulations.owl> ] ;
-      #ja:content [ja:externalContent <file:///app/run/databases/cranfield.owl> ] ;
-      #ja:content [ja:externalContent <file:///app/run/databases/skull.owl> ] ;
+      ja:content [ja:externalContent <file:///app/run/databases/handover.owl> ] ;
       ja:content [ja:externalContent <file:///app/run/databases/model.ttl> ] ;
       ja:content [ja:externalContent <file:///app/run/databases/data.ttl> ] ;
 
