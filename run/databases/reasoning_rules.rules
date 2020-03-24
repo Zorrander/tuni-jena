@@ -8,7 +8,7 @@
 @include <OWL> .
 
 // React to handover commands
-[handoverCmd: (?cmd a cogrob:Command), (?cmd cogrob:has_action 'give'), (?cmd cogrob:has_target ?thing)
+[handoverCmd: (?cmd a cogrob:Command)
                 -> (cogrob:handoverInd rdf:type cogrob:Handover), (cogrob:handoverInd cogrob:actsOn ?thing)]
 
 // Create an event to grasp an object in the case where the actor is not holding anything
