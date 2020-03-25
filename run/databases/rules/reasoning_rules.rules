@@ -1,0 +1,29 @@
+@prefix ns:   <http://www.example.org/ns#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix cogrob: <http://onto-server-tuni.herokuapp.com/Panda#> .
+
+@include <OWL> .
+
+// React to handover commands
+[handoverCmd: (?cmd cogrob:has_action 'give'), (?cmd cogrob:has_target ?thing)
+      -> (cogrob:handoverInd rdf:type cogrob:Handover), (cogrob:handoverInd cogrob:actsOn ?thing)
+]
+
+// Create an event to reach for the object if trying to grasp an object too far from the gripper
+[reachRule: (?event cogrob:involves cogrob:Robot), (?event cogrob:actsOn ?thing), (cogrob:Robot cogrob:isHoldingSomething "false"),
+              noValue(?actor cogrob:isHolding ?thing), noValue(?thing cogrob:isInReachOf ?actor)
+      -> (cogrob:moveArmInd rdf:type cogrob:ArmEvent), (cogrob:moveArmInd cogrob:involves cogrob:Robot), (cogrob:moveArmInd cogrob:actsOn ?thing)]
+
+// Create an event to properly grasp the object
+[graspRule: (?grasp cogrob:actsOn ?thing), (?grasp cogrob:involves ?actor), (?actor cogrob:isHoldingSomething "false"),
+                      noValue(?actor cogrob:isHolding ?thing), (?thing cogrob:isInReachOf ?actor)
+      -> (cogrob:moveGripperInd rdf:type cogrob:GripperEvent), (cogrob:moveGripperInd cogrob:actsOn ?thing), (cogrob:moveGripperInd cogrob:involves cogrob:Robot)]
+
+[handoverRule: (?grasp rdf:type cogrob:Handover), (cogrob:Robot cogrob:isHolding ?thing)
+      -> (cogrob:giveInd rdf:type cogrob:ArmEvent), (cogrob:giveInd cogrob:actsOn ?thing),
+                        (cogrob:giveInd cogrob:withPath cogrob:moveArmPath), (cogrob:moveArmPath rdf:type cogrob:Toward),
+                        (cogrob:moveArmPath cogrob:withPlace cogrob:InFunction), (cogrob:InFunction rdf:type cogrob:Inside),
+                        (cogrob:InFunction cogrob:withPlace ?hand), (cogrob:Human cogrob:hasHand ?hand) ]

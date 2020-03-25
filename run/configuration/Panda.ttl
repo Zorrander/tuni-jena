@@ -23,9 +23,9 @@
     [ rdfs:label "Panda" ;
       a ja:InfModel ;
 
-      ja:content [ja:externalContent <file:///app/run/databases/handover.owl> ] ;
-      ja:content [ja:externalContent <file:///app/run/databases/model.ttl> ] ;
-      ja:content [ja:externalContent <file:///app/run/databases/data.ttl> ] ;
+      ja:content [ja:externalContent <file:../databases/handover.owl> ] ;
+      ja:content [ja:externalContent <file:../databases/model.ttl> ] ;
+      ja:content [ja:externalContent <file:../databases/data.ttl> ] ;
 
       #Disable OWL based reasoner
       #ja:reasoner [ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLFBRuleReasoner>] ;
@@ -36,7 +36,7 @@
       #Enable Jena Rules based reasoner using the myrules.rules file
       ja:reasoner [
           ja:reasonerURL <http://jena.hpl.hp.com/2003/GenericRuleReasoner> ;
-          ja:rulesFrom   <file:///app/run/databases/reasoning_rules.rules> ;
+          ja:rulesFrom   <file:../databases/rules/reasoning_rules.rules> ;
       ] ;
     ] ;
    .
