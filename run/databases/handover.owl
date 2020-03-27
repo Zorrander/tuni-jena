@@ -28,6 +28,12 @@
     
 
 
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#causes -->
+
+    <owl:ObjectProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#causes"/>
+    
+
+
     <!-- http://onto-server-tuni.herokuapp.com/Panda#hasHand -->
 
     <owl:ObjectProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#hasHand"/>
@@ -241,6 +247,25 @@
 
     <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Handover">
         <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#ManipulationTask"/>
+    </owl:Class>
+    
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#HandoverCommand -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#HandoverCommand">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Command"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#causes"/>
+                        <owl:someValuesFrom rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Handover"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Command"/>
     </owl:Class>
     
 
