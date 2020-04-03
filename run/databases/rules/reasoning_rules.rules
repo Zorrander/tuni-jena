@@ -8,8 +8,8 @@
 @include <OWL> .
 
 // React to handover commands
-[handoverCmd: (?cmd cogrob:has_action "give"), (?cmd cogrob:has_target ?thing), (?obj cogrob:is_called ?thing)
-      -> (cogrob:handoverInd rdf:type cogrob:Handover), (cogrob:handoverInd cogrob:actsOn ?obj)
+[handoverCmd: (?cmd cogrob:has_action "give"), (?cmd cogrob:has_target ?thing)
+      -> (cogrob:handoverInd rdf:type cogrob:Handover), (cogrob:handoverInd cogrob:actsOn ?thing), (cogrob:handoverInd cogrob:isCausedBy ?cmd)
 ]
 
 // Create an event to reach for the object if trying to grasp an object too far from the gripper

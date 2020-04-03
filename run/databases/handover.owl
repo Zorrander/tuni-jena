@@ -28,12 +28,6 @@
     
 
 
-    <!-- http://onto-server-tuni.herokuapp.com/Panda#causes -->
-
-    <owl:ObjectProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#causes"/>
-    
-
-
     <!-- http://onto-server-tuni.herokuapp.com/Panda#hasHand -->
 
     <owl:ObjectProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#hasHand"/>
@@ -61,6 +55,15 @@
 
     <owl:ObjectProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#involves">
         <rdfs:range rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Actor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#isCausedBy -->
+
+    <owl:ObjectProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#isCausedBy">
+        <rdfs:domain rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Event"/>
+        <rdfs:range rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Command"/>
     </owl:ObjectProperty>
     
 
