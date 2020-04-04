@@ -402,6 +402,25 @@
     <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Under">
         <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#PlaceFunction"/>
     </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Panda -->
+
+    <owl:NamedIndividual rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Panda">
+        <isHoldingSomething rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isHoldingSomething>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
 

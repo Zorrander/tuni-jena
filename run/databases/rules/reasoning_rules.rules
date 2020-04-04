@@ -13,17 +13,17 @@
 ]
 
 // Create an event to reach for the object if trying to grasp an object too far from the gripper
-[reachRule: (?event cogrob:involves cogrob:Robot), (?event cogrob:actsOn ?thing), (cogrob:Robot cogrob:isHoldingSomething "false"),
+[reachRule: (?event cogrob:involves cogrob:Panda), (?event cogrob:actsOn ?thing), (cogrob:Panda cogrob:isHoldingSomething "false"^^xsd:boolean),
               noValue(?actor cogrob:isHolding ?thing), noValue(?thing cogrob:isInReachOf ?actor)
-      -> (cogrob:moveArmInd rdf:type cogrob:ArmEvent), (cogrob:moveArmInd cogrob:involves cogrob:Robot), (cogrob:moveArmInd cogrob:actsOn ?thing)]
+      -> (cogrob:moveArmInd rdf:type cogrob:ArmEvent), (cogrob:moveArmInd cogrob:involves cogrob:Panda), (cogrob:moveArmInd cogrob:actsOn ?thing), (cogrob:moveArmInd cogrob:isCausedBy ?event)]
 
 // Create an event to properly grasp the object
-[graspRule: (?grasp cogrob:actsOn ?thing), (?grasp cogrob:involves ?actor), (?actor cogrob:isHoldingSomething "false"),
+[graspRule: (?grasp cogrob:actsOn ?thing), (?grasp cogrob:involves ?actor), (?actor cogrob:isHoldingSomething "false"^^xsd:boolean),
                       noValue(?actor cogrob:isHolding ?thing), (?thing cogrob:isInReachOf ?actor)
-      -> (cogrob:moveGripperInd rdf:type cogrob:GripperEvent), (cogrob:moveGripperInd cogrob:actsOn ?thing), (cogrob:moveGripperInd cogrob:involves cogrob:Robot)]
+      -> (cogrob:moveGripperInd rdf:type cogrob:GripperEvent), (cogrob:moveGripperInd cogrob:actsOn ?thing), (cogrob:moveGripperInd cogrob:involves cogrob:Panda), (cogrob:moveGripperInd cogrob:isCausedBy ?event)]
 
-[handoverRule: (?grasp rdf:type cogrob:Handover), (cogrob:Robot cogrob:isHolding ?thing)
-      -> (cogrob:giveInd rdf:type cogrob:ArmEvent), (cogrob:giveInd cogrob:actsOn ?thing),
+[handoverRule: (?grasp rdf:type cogrob:Handover), (cogrob:Panda cogrob:isHolding ?thing)
+      -> (cogrob:giveInd rdf:type cogrob:ArmEvent), (cogrob:giveInd cogrob:actsOn ?thing), (cogrob:giveInd cogrob:isCausedBy ?grasp)
                         (cogrob:giveInd cogrob:withPath cogrob:moveArmPath), (cogrob:moveArmPath rdf:type cogrob:Toward),
                         (cogrob:moveArmPath cogrob:withPlace cogrob:InFunction), (cogrob:InFunction rdf:type cogrob:Inside),
                         (cogrob:InFunction cogrob:withPlace ?hand), (cogrob:Human cogrob:hasHand ?hand) ]

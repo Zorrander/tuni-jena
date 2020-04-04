@@ -35,6 +35,7 @@
 
       #Enable Jena Rules based reasoner using the myrules.rules file
       ja:reasoner [
+          # ja:reasonerClass "openllet.jena.PelletReasonerFactory";
           ja:reasonerURL <http://jena.hpl.hp.com/2003/GenericRuleReasoner> ;
           ja:rulesFrom   <file:../databases/rules/reasoning_rules.rules> ;
       ] ;
