@@ -245,6 +245,15 @@
     
 
 
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#GraspEvent -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#GraspEvent">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#GripperEvent"/>
+        <owl:disjointWith rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#ReleaseEvent"/>
+    </owl:Class>
+    
+
+
     <!-- http://onto-server-tuni.herokuapp.com/Panda#GripperEvent -->
 
     <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#GripperEvent">
@@ -349,6 +358,14 @@
 
     <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#PlaceFunction">
         <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#SpatialPlace"/>
+    </owl:Class>
+    
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#ReleaseEvent -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#ReleaseEvent">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#GripperEvent"/>
     </owl:Class>
     
 

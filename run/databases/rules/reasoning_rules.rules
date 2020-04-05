@@ -20,7 +20,7 @@
 // Create an event to properly grasp the object
 [graspRule: (?grasp cogrob:actsOn ?thing), (?grasp cogrob:involves ?actor), (?actor cogrob:isHoldingSomething "false"^^xsd:boolean),
                       noValue(?actor cogrob:isHolding ?thing), (?thing cogrob:isInReachOf ?actor)
-      -> (cogrob:moveGripperInd rdf:type cogrob:GripperEvent), (cogrob:moveGripperInd cogrob:actsOn ?thing), (cogrob:moveGripperInd cogrob:involves cogrob:Panda), (cogrob:moveGripperInd cogrob:isCausedBy ?event)]
+      -> (cogrob:moveGripperInd rdf:type cogrob:GraspEvent), (cogrob:moveGripperInd cogrob:actsOn ?thing), (cogrob:moveGripperInd cogrob:involves cogrob:Panda), (cogrob:moveGripperInd cogrob:isCausedBy ?event)]
 
 [handoverRule: (?grasp rdf:type cogrob:Handover), (cogrob:Panda cogrob:isHolding ?thing)
       -> (cogrob:giveInd rdf:type cogrob:ArmEvent), (cogrob:giveInd cogrob:actsOn ?thing), (cogrob:giveInd cogrob:isCausedBy ?grasp)
