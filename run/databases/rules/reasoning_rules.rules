@@ -9,7 +9,8 @@
 
 // React to handover commands
 [handoverCmd: (?cmd cogrob:has_action "give"), (?cmd cogrob:has_target ?thing)
-      -> (cogrob:handoverInd rdf:type cogrob:Handover), (cogrob:handoverInd cogrob:actsOn ?thing), (cogrob:handoverInd cogrob:isCausedBy ?cmd)
+      -> (cogrob:handoverInd rdf:type cogrob:Handover), (cogrob:handoverInd cogrob:actsOn ?thing), (cogrob:handoverInd cogrob:isCausedBy ?cmd),
+      (cogrob:handoverInd cogrob:impliesCommitment cogrob:takeCommitment), (cogrob:takeCommitment rdf:type cogrob:Take)
 ]
 
 // Create an event to reach for the object if trying to grasp an object too far from the gripper
@@ -26,7 +27,17 @@
       -> (cogrob:giveInd rdf:type cogrob:GiveEvent), (cogrob:giveInd cogrob:actsOn ?thing), (cogrob:giveInd cogrob:isCausedBy ?grasp)
                         (cogrob:giveInd cogrob:withPath cogrob:moveArmPath), (cogrob:moveArmPath rdf:type cogrob:Toward),
                         (cogrob:moveArmPath cogrob:withPlace cogrob:InFunction), (cogrob:InFunction rdf:type cogrob:Inside),
-                        (cogrob:InFunction cogrob:withPlace ?hand), (cogrob:Human cogrob:hasHand ?hand) ]
+                        (cogrob:InFunction cogrob:withPlace ?hand), (cogrob:Human cogrob:hasHand ?hand)
+                      ]
+
+[commitmentRule: (?ind cogrob:impliesCommitment ?commitment), (?ind cogrob:actsOn ?thing)
+                      -> (?commitment cogrob:isCausedBy ?ind), (?commitment cogrob:actsOn ?thing)
+                      ]
+
+[takeCommitmentRule: (?action cogrob:impliesCommitment ?commitment), (?commitment rdf:type cogrob:Take)
+                      -> (cogrob:releaseGripperInd rdf:type cogrob:ReleaseEvent), (cogrob:releaseGripperInd cogrob:actsOn ?thing),
+                         (cogrob:releaseGripperInd cogrob:involves cogrob:Panda), (cogrob:releaseGripperInd cogrob:isCausedBy ?commitment)
+                      ]
 
 [effectReachAction: (?event rdf:type cogrob:ReachEvent), (?event cogrob:actsOn ?thing), (?event cogrob:involves ?actor), (?event cogrob:isCompleted "true"^^xsd:boolean)
                       -> (?thing cogrob:isInReachOf ?actor)
@@ -38,4 +49,8 @@
 
 [effectGiveAction: (?event rdf:type cogrob:GiveEvent), (?event cogrob:isCompleted "true"^^xsd:boolean)
                       -> (?thing cogrob:isReadyToBeTaken "true"^^xsd:boolean)
+                      ]
+
+[effectReleaseAction: (?event rdf:type cogrob:ReleaseEvent), (?event cogrob:involves ?actor), (?event cogrob:actsOn ?thing), (?event cogrob:isCompleted "true"^^xsd:boolean)
+                      -> drop(1)(?actor cogrob:isHolding ?thing)
                       ]

@@ -51,6 +51,12 @@
     
 
 
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#impliesCommitment -->
+
+    <owl:ObjectProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#impliesCommitment"/>
+    
+
+
     <!-- http://onto-server-tuni.herokuapp.com/Panda#involves -->
 
     <owl:ObjectProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#involves">
@@ -241,6 +247,13 @@
 
     <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#GiveEvent">
         <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#ArmEvent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#impliesCommitment"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Take"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -410,6 +423,14 @@
 
     <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Stay">
         <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#Take -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Take">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#ManipulationTask"/>
     </owl:Class>
     
 
