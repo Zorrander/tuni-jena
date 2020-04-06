@@ -237,6 +237,14 @@
     
 
 
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#GiveEvent -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#GiveEvent">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#ArmEvent"/>
+    </owl:Class>
+    
+
+
     <!-- http://onto-server-tuni.herokuapp.com/Panda#Go -->
 
     <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#Go">
@@ -358,6 +366,14 @@
 
     <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#PlaceFunction">
         <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#SpatialPlace"/>
+    </owl:Class>
+    
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#ReachEvent -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#ReachEvent">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#ArmEvent"/>
     </owl:Class>
     
 

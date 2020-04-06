@@ -14,16 +14,28 @@
 
 // Create an event to reach for the object if trying to grasp an object too far from the gripper
 [reachRule: (?event cogrob:involves cogrob:Panda), (?event cogrob:actsOn ?thing), (cogrob:Panda cogrob:isHoldingSomething "false"^^xsd:boolean),
-              noValue(?actor cogrob:isHolding ?thing), noValue(?thing cogrob:isInReachOf ?actor)
-      -> (cogrob:moveArmInd rdf:type cogrob:ArmEvent), (cogrob:moveArmInd cogrob:involves cogrob:Panda), (cogrob:moveArmInd cogrob:actsOn ?thing), (cogrob:moveArmInd cogrob:isCausedBy ?event)]
+              noValue(cogrob:Panda cogrob:isHolding ?thing), noValue(?thing cogrob:isInReachOf cogrob:Panda), noValue(?event cogrob:isCompleted "true"^^xsd:boolean)
+      -> (cogrob:moveArmInd rdf:type cogrob:ReachEvent), (cogrob:moveArmInd cogrob:involves cogrob:Panda), (cogrob:moveArmInd cogrob:actsOn ?thing), (cogrob:moveArmInd cogrob:isCausedBy ?event)]
 
 // Create an event to properly grasp the object
-[graspRule: (?grasp cogrob:actsOn ?thing), (?grasp cogrob:involves ?actor), (?actor cogrob:isHoldingSomething "false"^^xsd:boolean),
-                      noValue(?actor cogrob:isHolding ?thing), (?thing cogrob:isInReachOf ?actor)
-      -> (cogrob:moveGripperInd rdf:type cogrob:GraspEvent), (cogrob:moveGripperInd cogrob:actsOn ?thing), (cogrob:moveGripperInd cogrob:involves cogrob:Panda), (cogrob:moveGripperInd cogrob:isCausedBy ?event)]
+[graspRule: (?grasp cogrob:actsOn ?thing), (?grasp cogrob:involves cogrob:Panda), (cogrob:Panda cogrob:isHoldingSomething "false"^^xsd:boolean), noValue(?grasp cogrob:isCompleted "true"^^xsd:boolean),
+                      noValue(cogrob:Panda cogrob:isHolding ?thing), (?thing cogrob:isInReachOf cogrob:Panda)
+      -> (cogrob:moveGripperInd rdf:type cogrob:GraspEvent), (cogrob:moveGripperInd cogrob:actsOn ?thing), (cogrob:moveGripperInd cogrob:involves cogrob:Panda), (cogrob:moveGripperInd cogrob:isCausedBy ?grasp)]
 
-[handoverRule: (?grasp rdf:type cogrob:Handover), (cogrob:Panda cogrob:isHolding ?thing)
-      -> (cogrob:giveInd rdf:type cogrob:ArmEvent), (cogrob:giveInd cogrob:actsOn ?thing), (cogrob:giveInd cogrob:isCausedBy ?grasp)
+[handoverRule: (?grasp rdf:type cogrob:Handover), (cogrob:Panda cogrob:isHolding ?thing), noValue(?grasp cogrob:isCompleted "true"^^xsd:boolean)
+      -> (cogrob:giveInd rdf:type cogrob:GiveEvent), (cogrob:giveInd cogrob:actsOn ?thing), (cogrob:giveInd cogrob:isCausedBy ?grasp)
                         (cogrob:giveInd cogrob:withPath cogrob:moveArmPath), (cogrob:moveArmPath rdf:type cogrob:Toward),
                         (cogrob:moveArmPath cogrob:withPlace cogrob:InFunction), (cogrob:InFunction rdf:type cogrob:Inside),
                         (cogrob:InFunction cogrob:withPlace ?hand), (cogrob:Human cogrob:hasHand ?hand) ]
+
+[effectReachAction: (?event rdf:type cogrob:ReachEvent), (?event cogrob:actsOn ?thing), (?event cogrob:involves ?actor), (?event cogrob:isCompleted "true"^^xsd:boolean)
+                      -> (?thing cogrob:isInReachOf ?actor)
+                      ]
+
+[effectGraspAction: (?event rdf:type cogrob:GraspEvent), (?event cogrob:actsOn ?thing), (?event cogrob:involves ?actor), (?event cogrob:isCompleted "true"^^xsd:boolean)
+                      -> (?actor cogrob:isHolding ?thing), drop(1)(?thing cogrob:isInReachOf ?actor)
+                      ]
+
+[effectGiveAction: (?event rdf:type cogrob:GiveEvent), (?event cogrob:isCompleted "true"^^xsd:boolean)
+                      -> (?thing cogrob:isReadyToBeTaken "true"^^xsd:boolean)
+                      ]
