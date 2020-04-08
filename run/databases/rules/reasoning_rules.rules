@@ -9,48 +9,53 @@
 
 // React to handover commands
 [handoverCmd: (?cmd cogrob:has_action "give"), (?cmd cogrob:has_target ?thing)
-      -> (cogrob:handoverInd rdf:type cogrob:Handover), (cogrob:handoverInd cogrob:actsOn ?thing), (cogrob:handoverInd cogrob:isCausedBy ?cmd),
-      (cogrob:handoverInd cogrob:impliesCommitment cogrob:takeCommitment), (cogrob:takeCommitment rdf:type cogrob:Take)
+      -> (cogrob:handoverExample cogrob:actsOn ?thing) (cogrob:handoverExample cogrob:isCausedBy ?cmd)
 ]
 
-// Create an event to reach for the object if trying to grasp an object too far from the gripper
-[reachRule: (?event cogrob:involves cogrob:Panda), (?event cogrob:actsOn ?thing), (cogrob:Panda cogrob:isHoldingSomething "false"^^xsd:boolean),
-              noValue(cogrob:Panda cogrob:isHolding ?thing), noValue(?thing cogrob:isInReachOf cogrob:Panda), noValue(?event cogrob:isCompleted "true"^^xsd:boolean)
-      -> (cogrob:moveArmInd rdf:type cogrob:ReachEvent), (cogrob:moveArmInd cogrob:involves cogrob:Panda), (cogrob:moveArmInd cogrob:actsOn ?thing), (cogrob:moveArmInd cogrob:isCausedBy ?event)]
+[handoverTargetRule: (?event rdf:type cogrob:HandoverTask), (?event cogrob:actsOn ?thing), (?event cogrob:hasMethod ?method), (?method cogrob:hasSubtask ?subtask), (?subtask rdf:type cogrob:ReachTask)
+      -> (?subtask cogrob:actsOn ?thing)]
 
-// Create an event to properly grasp the object
-[graspRule: (?grasp cogrob:actsOn ?thing), (?grasp cogrob:involves cogrob:Panda), (cogrob:Panda cogrob:isHoldingSomething "false"^^xsd:boolean), noValue(?grasp cogrob:isCompleted "true"^^xsd:boolean),
-                      noValue(cogrob:Panda cogrob:isHolding ?thing), (?thing cogrob:isInReachOf cogrob:Panda)
-      -> (cogrob:moveGripperInd rdf:type cogrob:GraspEvent), (cogrob:moveGripperInd cogrob:actsOn ?thing), (cogrob:moveGripperInd cogrob:involves cogrob:Panda), (cogrob:moveGripperInd cogrob:isCausedBy ?grasp)]
 
-[handoverRule: (?grasp rdf:type cogrob:Handover), (cogrob:Panda cogrob:isHolding ?thing), noValue(?grasp cogrob:isCompleted "true"^^xsd:boolean)
-      -> (cogrob:giveInd rdf:type cogrob:GiveEvent), (cogrob:giveInd cogrob:actsOn ?thing), (cogrob:giveInd cogrob:isCausedBy ?grasp)
-                        (cogrob:giveInd cogrob:withPath cogrob:moveArmPath), (cogrob:moveArmPath rdf:type cogrob:Toward),
-                        (cogrob:moveArmPath cogrob:withPlace cogrob:InFunction), (cogrob:InFunction rdf:type cogrob:Inside),
-                        (cogrob:InFunction cogrob:withPlace ?hand), (cogrob:Human cogrob:hasHand ?hand)
+[isHoldingCondition: (cogrob:Panda cogrob:isHoldingSomething "true"^^xsd:boolean)
+                    ->  ( cogrob:holds cogrob:isMet "true"^^xsd:boolean), drop(1)(cogrob:doesNotHold cogrob:isMet "true"^^xsd:boolean)
+                    ]
+
+[isNotHoldingCondition: noValue(cogrob:Panda cogrob:isHoldingSomething "true"^^xsd:boolean)
+                    ->  ( cogrob:doesNotHold cogrob:isMet "true"^^xsd:boolean)
+                    ]
+
+[canReachCondition: (?event rdf:type cogrob:HandoverTask), (?event cogrob:actsOn ?thing), (?thing cogrob:isInReachOf cogrob:Panda)
+                    ->  ( cogrob:canReach cogrob:isMet "true"^^xsd:boolean)
+                    ]
+
+[cannotReachCondition: (?event rdf:type cogrob:HandoverTask), (?event cogrob:actsOn ?thing), noValue(?thing cogrob:isInReachOf cogrob:Panda)
+                    ->  ( cogrob:cannotReach cogrob:isMet "true"^^xsd:boolean)
+                    ]
+
+[readyToBeTakenCondition: (?event rdf:type cogrob:HandoverTask), (?event cogrob:actsOn ?thing), (?thing cogrob:isReadyToBeTaken "true"^^xsd:boolean)
+                    ->  ( cogrob:readyToBeTaken cogrob:isMet "true"^^xsd:boolean)
+                    ]
+
+[notReadyToBeTakenCondition:(?event rdf:type cogrob:HandoverTask), (?event cogrob:actsOn ?thing), noValue(?thing cogrob:isReadyToBeTaken "true"^^xsd:boolean)
+                    ->  ( cogrob:notReadyToBeTaken cogrob:isMet "true"^^xsd:boolean)
+                    ]
+
+
+//[effectMoveTask: (?event rdf:type cogrob:MoveTask), (?event cogrob:actsOn ?thing), (?event cogrob:isDone "true"^^xsd:boolean)->  ]
+
+
+[effectReachTask: (?event rdf:type cogrob:ReachTask), (?event cogrob:actsOn ?thing), (?event cogrob:isDone "true"^^xsd:boolean)
+                      -> (?thing cogrob:isInReachOf cogrob:Panda)
                       ]
 
-[commitmentRule: (?ind cogrob:impliesCommitment ?commitment), (?ind cogrob:actsOn ?thing)
-                      -> (?commitment cogrob:isCausedBy ?ind), (?commitment cogrob:actsOn ?thing)
+[effectGraspTask: (?event rdf:type cogrob:GraspTask), (?event cogrob:actsOn ?thing), (?event cogrob:isDone "true"^^xsd:boolean)
+                      -> (cogrob:Panda cogrob:isHoldingSomething "true"^^xsd:boolean), drop(1)(?thing cogrob:isInReachOf cogrob:Panda)
                       ]
 
-[takeCommitmentRule: (?action cogrob:impliesCommitment ?commitment), (?commitment rdf:type cogrob:Take)
-                      -> (cogrob:releaseGripperInd rdf:type cogrob:ReleaseEvent), (cogrob:releaseGripperInd cogrob:actsOn ?thing),
-                         (cogrob:releaseGripperInd cogrob:involves cogrob:Panda), (cogrob:releaseGripperInd cogrob:isCausedBy ?commitment)
+[effectIdleTask: (?event rdf:type cogrob:IdleTask), (?event cogrob:isDone "true"^^xsd:boolean)
+                      -> (cogrob:thing cogrob:isWaitingForHuman "true"^^xsd:boolean)
                       ]
 
-[effectReachAction: (?event rdf:type cogrob:ReachEvent), (?event cogrob:actsOn ?thing), (?event cogrob:involves ?actor), (?event cogrob:isCompleted "true"^^xsd:boolean)
-                      -> (?thing cogrob:isInReachOf ?actor)
-                      ]
-
-[effectGraspAction: (?event rdf:type cogrob:GraspEvent), (?event cogrob:actsOn ?thing), (?event cogrob:involves ?actor), (?event cogrob:isCompleted "true"^^xsd:boolean)
-                      -> (?actor cogrob:isHolding ?thing), drop(1)(?thing cogrob:isInReachOf ?actor)
-                      ]
-
-[effectGiveAction: (?event rdf:type cogrob:GiveEvent), (?event cogrob:isCompleted "true"^^xsd:boolean)
-                      -> (?thing cogrob:isReadyToBeTaken "true"^^xsd:boolean)
-                      ]
-
-[effectReleaseAction: (?event rdf:type cogrob:ReleaseEvent), (?event cogrob:involves ?actor), (?event cogrob:actsOn ?thing), (?event cogrob:isCompleted "true"^^xsd:boolean)
-                      -> drop(1)(?actor cogrob:isHolding ?thing)
+[effectReleaseTask: (?event rdf:type cogrob:ReleaseTask), (?event cogrob:actsOn ?thing), (?event cogrob:isDone "true"^^xsd:boolean)
+                      -> drop(1)(cogrob:Panda cogrob:isHoldingSomething "true"^^xsd:boolean)
                       ]
