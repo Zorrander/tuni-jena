@@ -9,7 +9,7 @@
 
 // React to handover commands
 [handoverCmd: (?cmd cogrob:has_action "give"), (?cmd cogrob:has_target ?thing)
-      -> (cogrob:handoverExample cogrob:actsOn ?thing) (cogrob:handoverExample cogrob:isCausedBy ?cmd)
+      -> (cogrob:handoverExample cogrob:actsOn ?thing) (cogrob:handoverExample cogrob:isCausedBy ?cmd) (cogrob:handoverCmd cogrob:isMet "true"^^xsd:boolean)
 ]
 
 [handoverTargetRule: (?event rdf:type cogrob:HandoverTask), (?event cogrob:actsOn ?thing), (?event cogrob:hasMethod ?method), (?method cogrob:hasSubtask ?subtask), (?subtask rdf:type cogrob:ReachTask)
@@ -24,11 +24,11 @@
                     ->  ( cogrob:doesNotHold cogrob:isMet "true"^^xsd:boolean)
                     ]
 
-[canReachCondition: (?event rdf:type cogrob:HandoverTask), (?event cogrob:actsOn ?thing), (?thing cogrob:isInReachOf cogrob:Panda)
+[canReachCondition: (cogrob:Panda cogrob:canReach "true"^^xsd:boolean)
                     ->  ( cogrob:canReach cogrob:isMet "true"^^xsd:boolean)
                     ]
 
-[cannotReachCondition: (?event rdf:type cogrob:HandoverTask), (?event cogrob:actsOn ?thing), noValue(?thing cogrob:isInReachOf cogrob:Panda)
+[cannotReachCondition: noValue(cogrob:Panda cogrob:canReach "true"^^xsd:boolean)
                     ->  ( cogrob:cannotReach cogrob:isMet "true"^^xsd:boolean)
                     ]
 
@@ -45,17 +45,13 @@
 
 
 [effectReachTask: (?event rdf:type cogrob:ReachTask), (?event cogrob:actsOn ?thing), (?event cogrob:isDone "true"^^xsd:boolean)
-                      -> (?thing cogrob:isInReachOf cogrob:Panda)
+                      -> (cogrob:Panda cogrob:canReach "true"^^xsd:boolean)
                       ]
 
-[effectGraspTask: (?event rdf:type cogrob:GraspTask), (?event cogrob:actsOn ?thing), (?event cogrob:isDone "true"^^xsd:boolean)
-                      -> (cogrob:Panda cogrob:isHoldingSomething "true"^^xsd:boolean), drop(1)(?thing cogrob:isInReachOf cogrob:Panda)
+[effectGraspTask: (?event rdf:type cogrob:GraspTask), (?event cogrob:isDone "true"^^xsd:boolean)
+                      -> (cogrob:Panda cogrob:isHoldingSomething "true"^^xsd:boolean)
                       ]
 
-[effectIdleTask: (?event rdf:type cogrob:IdleTask), (?event cogrob:isDone "true"^^xsd:boolean)
-                      -> (cogrob:thing cogrob:isWaitingForHuman "true"^^xsd:boolean)
-                      ]
-
-[effectReleaseTask: (?event rdf:type cogrob:ReleaseTask), (?event cogrob:actsOn ?thing), (?event cogrob:isDone "true"^^xsd:boolean)
+[effectReleaseTask: (?event rdf:type cogrob:ReleaseTask), (?event cogrob:isDone "true"^^xsd:boolean)
                       -> drop(1)(cogrob:Panda cogrob:isHoldingSomething "true"^^xsd:boolean)
                       ]

@@ -46,23 +46,6 @@
     
 
 
-    <!-- http://onto-server-tuni.herokuapp.com/Panda#has_action -->
-
-    <owl:ObjectProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#has_action">
-        <rdfs:domain rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Task"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://onto-server-tuni.herokuapp.com/Panda#has_target -->
-
-    <owl:ObjectProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#has_target">
-        <rdfs:domain rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Task"/>
-        <rdfs:range rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#SpatialPlace"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://onto-server-tuni.herokuapp.com/Panda#impliesCommitment -->
 
     <owl:ObjectProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#impliesCommitment"/>
@@ -126,6 +109,18 @@
     <!-- http://onto-server-tuni.herokuapp.com/Panda#hasPriority -->
 
     <owl:DatatypeProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#hasPriority"/>
+    
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#has_action -->
+
+    <owl:DatatypeProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#has_action"/>
+    
+
+
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#has_target -->
+
+    <owl:DatatypeProperty rdf:about="http://onto-server-tuni.herokuapp.com/Panda#has_target"/>
     
 
 
@@ -308,6 +303,14 @@
     
 
 
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#HandoverMethod -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#HandoverMethod">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Method"/>
+    </owl:Class>
+    
+
+
     <!-- http://onto-server-tuni.herokuapp.com/Panda#HandoverTask -->
 
     <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#HandoverTask">
@@ -468,6 +471,14 @@
     
 
 
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#ReceivedHandoverCommand -->
+
+    <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#ReceivedHandoverCommand">
+        <rdfs:subClassOf rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Condition"/>
+    </owl:Class>
+    
+
+
     <!-- http://onto-server-tuni.herokuapp.com/Panda#ReleaseTask -->
 
     <owl:Class rdf:about="http://onto-server-tuni.herokuapp.com/Panda#ReleaseTask">
@@ -554,6 +565,15 @@
     
 
 
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#be -->
+
+    <owl:NamedIndividual rdf:about="http://onto-server-tuni.herokuapp.com/Panda#be">
+        <rdf:type rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#CompoundTask"/>
+        <hasMethod rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#method1"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://onto-server-tuni.herokuapp.com/Panda#canReach -->
 
     <owl:NamedIndividual rdf:about="http://onto-server-tuni.herokuapp.com/Panda#canReach">
@@ -586,6 +606,14 @@
     
 
 
+    <!-- http://onto-server-tuni.herokuapp.com/Panda#handoverCmd -->
+
+    <owl:NamedIndividual rdf:about="http://onto-server-tuni.herokuapp.com/Panda#handoverCmd">
+        <rdf:type rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#ReceivedHandoverCommand"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://onto-server-tuni.herokuapp.com/Panda#handoverExample -->
 
     <owl:NamedIndividual rdf:about="http://onto-server-tuni.herokuapp.com/Panda#handoverExample">
@@ -593,8 +621,6 @@
         <hasMethod rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#method1"/>
         <hasMethod rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#method2"/>
         <hasMethod rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#method3"/>
-        <hasMethod rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#method4"/>
-        <hasMethod rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#method5"/>
     </owl:NamedIndividual>
     
 
@@ -627,9 +653,11 @@
     <!-- http://onto-server-tuni.herokuapp.com/Panda#method1 -->
 
     <owl:NamedIndividual rdf:about="http://onto-server-tuni.herokuapp.com/Panda#method1">
-        <rdf:type rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Method"/>
-        <hasCondition rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#cannotReach"/>
+        <rdf:type rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#HandoverMethod"/>
         <hasCondition rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#doesNotHold"/>
+        <hasCondition rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#handoverCmd"/>
+        <hasSubtask rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#moveTo"/>
+        <hasSubtask rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#pickUp"/>
         <hasSubtask rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#reachFor"/>
         <hasPriority rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</hasPriority>
     </owl:NamedIndividual>
@@ -640,10 +668,9 @@
 
     <owl:NamedIndividual rdf:about="http://onto-server-tuni.herokuapp.com/Panda#method2">
         <rdf:type rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Method"/>
-        <hasCondition rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#canReach"/>
-        <hasCondition rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#doesNotHold"/>
-        <hasSubtask rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#pickUp"/>
-        <hasPriority rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2</hasPriority>
+        <hasCondition rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#alwaysTrue"/>
+        <hasSubtask rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#waitForHuman"/>
+        <hasPriority rdf:datatype="http://www.w3.org/2001/XMLSchema#int">20</hasPriority>
     </owl:NamedIndividual>
     
 
@@ -653,32 +680,9 @@
     <owl:NamedIndividual rdf:about="http://onto-server-tuni.herokuapp.com/Panda#method3">
         <rdf:type rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Method"/>
         <hasCondition rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#holds"/>
-        <hasCondition rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#notReadyToBeTaken"/>
-        <hasSubtask rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#moveTo"/>
-        <hasPriority rdf:datatype="http://www.w3.org/2001/XMLSchema#int">3</hasPriority>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://onto-server-tuni.herokuapp.com/Panda#method4 -->
-
-    <owl:NamedIndividual rdf:about="http://onto-server-tuni.herokuapp.com/Panda#method4">
-        <rdf:type rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Method"/>
-        <hasCondition rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#holds"/>
         <hasCondition rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#readyToBeTaken"/>
         <hasSubtask rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#letGo"/>
-        <hasPriority rdf:datatype="http://www.w3.org/2001/XMLSchema#int">4</hasPriority>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://onto-server-tuni.herokuapp.com/Panda#method5 -->
-
-    <owl:NamedIndividual rdf:about="http://onto-server-tuni.herokuapp.com/Panda#method5">
-        <rdf:type rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#Method"/>
-        <hasCondition rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#alwaysTrue"/>
-        <hasSubtask rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#waitForHuman"/>
-        <hasPriority rdf:datatype="http://www.w3.org/2001/XMLSchema#int">5</hasPriority>
+        <hasPriority rdf:datatype="http://www.w3.org/2001/XMLSchema#int">3</hasPriority>
     </owl:NamedIndividual>
     
 
@@ -695,6 +699,7 @@
 
     <owl:NamedIndividual rdf:about="http://onto-server-tuni.herokuapp.com/Panda#moveTo">
         <rdf:type rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#MoveTask"/>
+        <hasCondition rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#holds"/>
         <useOperator rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#move"/>
     </owl:NamedIndividual>
     
@@ -721,6 +726,8 @@
 
     <owl:NamedIndividual rdf:about="http://onto-server-tuni.herokuapp.com/Panda#pickUp">
         <rdf:type rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#GraspTask"/>
+        <hasCondition rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#canReach"/>
+        <hasCondition rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#doesNotHold"/>
         <useOperator rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#close"/>
     </owl:NamedIndividual>
     
@@ -730,6 +737,8 @@
 
     <owl:NamedIndividual rdf:about="http://onto-server-tuni.herokuapp.com/Panda#reachFor">
         <rdf:type rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#ReachTask"/>
+        <hasCondition rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#cannotReach"/>
+        <hasCondition rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#doesNotHold"/>
         <useOperator rdf:resource="http://onto-server-tuni.herokuapp.com/Panda#move"/>
     </owl:NamedIndividual>
     
