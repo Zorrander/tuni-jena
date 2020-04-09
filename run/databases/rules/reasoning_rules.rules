@@ -17,41 +17,53 @@
 
 
 [isHoldingCondition: (cogrob:Panda cogrob:isHoldingSomething "true"^^xsd:boolean)
-                    ->  ( cogrob:holds cogrob:isMet "true"^^xsd:boolean), drop(1)(cogrob:doesNotHold cogrob:isMet "true"^^xsd:boolean)
+                    ->  ( cogrob:holds cogrob:isMet "true"^^xsd:boolean)
                     ]
+
+[cond1: (cogrob:Panda cogrob:isHoldingSomething "true"^^xsd:boolean), (cogrob:doesNotHold cogrob:isMet "true"^^xsd:boolean)
+ -> drop(1)(cogrob:doesNotHold cogrob:isMet "true"^^xsd:boolean)]
+
+[cond2: noValue(cogrob:Panda cogrob:isHoldingSomething "true"^^xsd:boolean), (cogrob:holds cogrob:isMet "true"^^xsd:boolean)
+  -> drop(1)(cogrob:holds cogrob:isMet "true"^^xsd:boolean)]
+
+[cond3: (cogrob:Panda cogrob:canReach "true"^^xsd:boolean), (cogrob:cannotReach cogrob:isMet "true"^^xsd:boolean)
+  -> drop(1)(cogrob:cannotReach cogrob:isMet "true"^^xsd:boolean)]
+
+[cond4: noValue(cogrob:Panda cogrob:canReach "true"^^xsd:boolean), (cogrob:canReach cogrob:isMet "true"^^xsd:boolean)
+    -> drop(1)(cogrob:canReach cogrob:isMet "true"^^xsd:boolean)]
 
 [isNotHoldingCondition: noValue(cogrob:Panda cogrob:isHoldingSomething "true"^^xsd:boolean)
                     ->  ( cogrob:doesNotHold cogrob:isMet "true"^^xsd:boolean)
                     ]
 
-[canReachCondition: (cogrob:Panda cogrob:canReach "true"^^xsd:boolean)
+[canReachCondition: (cogrob:Panda cogrob:isAbleToReach "true"^^xsd:boolean)
                     ->  ( cogrob:canReach cogrob:isMet "true"^^xsd:boolean)
                     ]
 
-[cannotReachCondition: noValue(cogrob:Panda cogrob:canReach "true"^^xsd:boolean)
+[cannotReachCondition: noValue(cogrob:Panda cogrob:isAbleToReach "true"^^xsd:boolean)
                     ->  ( cogrob:cannotReach cogrob:isMet "true"^^xsd:boolean)
                     ]
 
 [readyToBeTakenCondition: (?event rdf:type cogrob:HandoverTask), (?event cogrob:actsOn ?thing), (?thing cogrob:isReadyToBeTaken "true"^^xsd:boolean)
-                    ->  ( cogrob:readyToBeTaken cogrob:isMet "true"^^xsd:boolean)
+                    ->  ( cogrob:readyToBeTaken cogrob:isMet "true"^^xsd:boolean), drop(1)(cogrob:notReadyToBeTaken cogrob:isMet "true"^^xsd:boolean)
                     ]
 
 [notReadyToBeTakenCondition:(?event rdf:type cogrob:HandoverTask), (?event cogrob:actsOn ?thing), noValue(?thing cogrob:isReadyToBeTaken "true"^^xsd:boolean)
-                    ->  ( cogrob:notReadyToBeTaken cogrob:isMet "true"^^xsd:boolean)
+                    ->  ( cogrob:notReadyToBeTaken cogrob:isMet "true"^^xsd:boolean), drop(1)(cogrob:readyToBeTaken cogrob:isMet "true"^^xsd:boolean)
                     ]
 
 
-//[effectMoveTask: (?event rdf:type cogrob:MoveTask), (?event cogrob:actsOn ?thing), (?event cogrob:isDone "true"^^xsd:boolean)->  ]
+//[effectMoveTask: (?event rdf:type cogrob:MoveTask), (?event cogrob:actsOn ?thing), (?event cogrob:isCompleted "true"^^xsd:boolean)->  ]
 
 
-[effectReachTask: (?event rdf:type cogrob:ReachTask), (?event cogrob:actsOn ?thing), (?event cogrob:isDone "true"^^xsd:boolean)
-                      -> (cogrob:Panda cogrob:canReach "true"^^xsd:boolean)
+[effectReachTask: (cogrob:reachFor cogrob:isCompleted "true"^^xsd:boolean)
+                      -> (cogrob:Panda cogrob:isAbleToReach "true"^^xsd:boolean)
                       ]
 
-[effectGraspTask: (?event rdf:type cogrob:GraspTask), (?event cogrob:isDone "true"^^xsd:boolean)
+[effectGraspTask: (cogrob:grasp cogrob:isCompleted "true"^^xsd:boolean)
                       -> (cogrob:Panda cogrob:isHoldingSomething "true"^^xsd:boolean)
                       ]
 
-[effectReleaseTask: (?event rdf:type cogrob:ReleaseTask), (?event cogrob:isDone "true"^^xsd:boolean)
+[effectReleaseTask: (?event rdf:type cogrob:ReleaseTask), (?event cogrob:isCompleted "true"^^xsd:boolean)
                       -> drop(1)(cogrob:Panda cogrob:isHoldingSomething "true"^^xsd:boolean)
                       ]
